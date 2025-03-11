@@ -116,12 +116,12 @@ void loop()
     delay(50);
     RUN_TEST(test_COLOR);
     delay(50);
-    RUN_TEST(test_MUX);
-    delay(50);
-    RUN_TEST(test_MUXChanSelect);
-    delay(50); 
-    RUN_TEST(test_LeftTOF);
-    delay(50);
+    // RUN_TEST(test_MUX);
+    // delay(50);
+    // RUN_TEST(test_MUXChanSelect);
+    // delay(50); 
+    // RUN_TEST(test_LeftTOF);
+    // delay(50);
     i++;
   }
   else if (i == max_blinks)
