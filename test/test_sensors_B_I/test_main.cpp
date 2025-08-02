@@ -63,11 +63,11 @@ void test_MUXChanSelect(void){
   TEST_ASSERT_EQUAL(0, err);
 }
 
-void test_LeftTOF(void){
-  int err = tsaselect(0);
+void test_TOF(void){
+  //int err = tsaselect(0);
   //TEST_ASSERT_EQUAL(0, err);
   Wire.beginTransmission(TOFADDR);
-  err = Wire.endTransmission();
+  int err = Wire.endTransmission();
   delay(10);
 
   TEST_ASSERT_EQUAL(0, err);
@@ -101,30 +101,30 @@ void setup()
   RUN_TEST(test_led_builtin_pin_number);
 }
 
-uint8_t i = 0;
-uint8_t max_blinks = 5;
+
+uint8_t max_blinks = 2;
 
 void loop()
 {
-  if (i < max_blinks)
+  if (max_blinks--)
   {
-    RUN_TEST(test_led_state_high);
-    delay(50);
-    RUN_TEST(test_led_state_low);
-    delay(50);
+    // RUN_TEST(test_led_state_high);
+    // delay(50);
+    // RUN_TEST(test_led_state_low);
+    // delay(50);
     RUN_TEST(test_OLED);
     delay(50);
     RUN_TEST(test_COLOR);
+    delay(50);
+    RUN_TEST(test_TOF);
     delay(50);
     // RUN_TEST(test_MUX);
     // delay(50);
     // RUN_TEST(test_MUXChanSelect);
     // delay(50); 
-    // RUN_TEST(test_LeftTOF);
-    // delay(50);
-    i++;
+
   }
-  else if (i == max_blinks)
+  else 
   {
     UNITY_END(); // stop unit testing
   }
